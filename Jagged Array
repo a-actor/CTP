@@ -1,0 +1,31 @@
+    Private Sub AddCol()
+        ReDim colArr(sCol - 1) ' this is an Jagged Array
+        Dim xArr()
+        For j = 0 To sCol - 1
+            K = 0
+            For c = 0 To M - 1
+                Tong = tRow(1, j)
+                If c = 2638 Then
+                End If
+                ReDim Arr(sRow - 1)
+                For i = 0 To sRow - 1
+                    tmp = cArr(i, c)
+                    If tmp > 0 Then
+                        Tong = Tong - tCol(i - 1, 0) * tmp
+                        If Tong < dkC1 Then GoTo thoat
+                    End If
+                Next i
+                If Tong <= dkC2 Then
+                    For i = 0 To sRow - 1
+                        Arr(i) = cArr(i, c)
+                    Next i
+                    K = K + 1
+                    ReDim Preserve xArr(K - 1)
+                    xArr(K - 1) = Arr
+                End If
+thoat:
+            Next c
+            colArr(j) = xArr
+        Next j
+        Erase cArr
+    End Sub
